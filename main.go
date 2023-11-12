@@ -10,20 +10,18 @@ import (
 )
 
 func main() {
-	root := &cobra.Command{
+	rootCmd := &cobra.Command{
 		Use: "kubectl-cobraplugin",
 		Annotations: map[string]string{
 			cobra.CommandDisplayNameAnnotation: "kubectl cobraplugin",
 		},
 	}
-
-	sub := &cobra.Command{
+	subCmd := &cobra.Command{
 		Use: "subcmd",
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("kubectl cobraplugin subcmd")
 		},
 	}
-
-	root.AddCommand(sub)
-	root.Execute()
+	rootCmd.AddCommand(subCmd)
+	rootCmd.Execute()
 }
